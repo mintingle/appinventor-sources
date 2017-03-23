@@ -9,6 +9,7 @@ package edu.mit.appinventor;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
+import java.net.URI;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,7 +42,7 @@ public class CloudDBJedisListener extends JedisPubSub {
   }
   
   private Jedis getJedis(){
-    Jedis jedis = new Jedis("128.52.179.76", 6379);
+    Jedis jedis = new Jedis(URI.create("rediss://clouddb.appinventor.mit.edu:4040"));
     jedis.auth("test6789");
     return jedis;
   }
